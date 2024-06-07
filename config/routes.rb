@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get("/payment/new", {:controller => "omnicalc1", :action => "payment_with_form"})
   get("/random/new", {:controller => "omnicalc1", :action => "random_with_form"})
 
-  get("/square/result", {:controller => "omnicalc1", :action => "square_result"})
-  get("/square_root/result", {:controller => "omnicalc1", :action => "square_root_result"})
-  get("/payment/result", {:controller => "omnicalc1", :action => "payment_result"})
-  get("/random/result", {:controller => "omnicalc1", :action => "random_result"})
+  get("/square/results", {:controller => "omnicalc1", :action => "square_results"})
+  get("/square_root/results", {:controller => "omnicalc1", :action => "square_root_results"})
+  get("/payment/results", {:controller => "omnicalc1", :action => "payment_results"})
+  get("/random/results", {:controller => "omnicalc1", :action => "random_results"})
 end

@@ -1,13 +1,29 @@
-<form action="/square_root/results">
+<form action="/payment/results">
   <div>
-    <label for="number_input">
-      Enter a number
+    <label for="apr_input">
+      APR
     </label>
 
-    <input id="number_input" text="text" name="user_number" placeholder="What number do you want to take the square root of?">
+    <input id="apr_input" text="text" name="user_apr" placeholder="E.g. 5.42">
+  </div>
+
+  <div>
+    <label for="years_input">
+      Number of years
+    </label>
+
+    <input id="years_input" text="text" name="user_years" placeholder="How many years to repay?">
+  </div>
+
+  <div>
+    <label for="principal_input">
+      Principal
+    </label>
+
+    <input id="principal_input" text="text" name="user_pv" placeholder="How much principal?">
   </div>
 
   <button>
-    Calculate square root
+    Calculate monthly payment
   </button>
 </form>

@@ -73,10 +73,10 @@ Rails.application.routes.draw do
   get("/payment/new", {:controller => "omnicalc1", :action => "payment_with_form"})
   get("/random/new", {:controller => "omnicalc1", :action => "random_with_form"})
 
-  get("/square/result", {:controller => "omnicalc1", :action => "square_result"})
-  get("/square_root/result", {:controller => "omnicalc1", :action => "square_root_result"})
-  get("/payment/result", {:controller => "omnicalc1", :action => "payment_result"})
-  get("/random/result", {:controller => "omnicalc1", :action => "random_result"})
+  get("/square/results", {:controller => "omnicalc1", :action => "square_results"})
+  get("/square_root/results", {:controller => "omnicalc1", :action => "square_root_results"})
+  get("/payment/results", {:controller => "omnicalc1", :action => "payment_results"})
+  get("/random/results", {:controller => "omnicalc1", :action => "random_results"})
 end
 ```
 
@@ -99,22 +99,24 @@ class Omnicalc1Controller < ApplicationController
   def random_with_form
     render({:template => "omnicalc1_templates/random_with_form"})
   end
-
-  def square_with_form
-    render({:template => "omnicalc1_templates/square_result"})
+#-------------------------
+  def square_results
+    render({:template => "omnicalc1_templates/square_results"})
   end
 
-  def square_root_with_form
-    render({:template => "omnicalc1_templates/square_root_result"})
+  def square_root_results
+    render({:template => "omnicalc1_templates/square_root_results"})
   end
 
-  def payment_with_form
-    render({:template => "omnicalc1_templates/payment_result"})
+  def payment_results
+    render({:template => "omnicalc1_templates/payment_results"})
   end
 
-  def random_with_form
-    render({:template => "omnicalc1_templates/random_result"})
+  def random_results
+    render({:template => "omnicalc1_templates/random_results"})
   end
 
 end
 ```
+
+Troubleshooting TIPS: make sure all the names are consistent and correct for each of the RCAV components. 
