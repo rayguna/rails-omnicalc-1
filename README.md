@@ -152,7 +152,7 @@ Troubleshooting TIPS: make sure all the names are consistent and correct for eac
 
 Here is the output: {"number"=>"9", "controller"=>"omnicalc1", "action"=>"square_results"}
 
-7. Embed the calcuation script directly into the html page. Note that to display the result, you must add an equal sign (e.g., <%=@my_variable>). Also, the variable must be preceeded with a @. If it is ust ruby code, simply embed with <%%>.   
+7. Embed the calcuation script directly into the html page. Note that to display the result, you must add an equal sign (e.g., <%=@my_variable>). Also, the variable must be preceeded with a @. If it is ust ruby code, simply embed with <% some_ruby_codes %>.   
 
 square_results.html.erb
 ```
@@ -183,3 +183,63 @@ square_results.html.erb
   Calculate another square
 </a>
 ```
+8. For calculating monthly payment, round the numbers to 2 or 4 decimals using the command sprintf. Also, make sure to convert the fetched data to float using the method .to_f. 
+```
+<h1>
+  Payment Results
+</h1>
+
+<%@apr=params.fetch("user_apr").to_f%>
+<%@years=params.fetch("user_years").to_f%>
+<%@pv=params.fetch("user_pv").to_f%>
+
+
+<%def payment(apr, pv, years)%>
+  <% r = apr / 1200 %>
+  <% n = years*12 %>
+
+  <% numerator = r*pv %>
+  <% denominator= 1-(1+r)**-n %>
+
+  <% res = numerator/denominator #format to two decimal places %>
+
+  <% return res %>
+<% end %>
+
+<% @the_result = payment(@apr, @pv, @years) %>
+
+<dl>
+  <dt>
+    APR
+  </dt>
+  <dd>
+    <%=sprintf("%.4f",@apr)%>%
+  </dd>
+
+  <dt>
+    Number of years
+  </dt>
+  <dd>
+    <%=@years%>
+  </dd>
+
+  <dt>
+    Principal
+  </dt>
+  <dd>
+    <%=number_to_currency(@pv, :unit => "$")%>
+  </dd>
+
+  <dt>
+    Payment
+  </dt>
+  <dd>
+    <%=number_to_currency(@the_result, :unit => "$")%>
+  </dd>
+</dl>
+
+<a href="/payment/new">
+  Calculate another payment
+</a>
+```
+To convert float to currency format, use: number_to_currency(money_value, :unit => "$")

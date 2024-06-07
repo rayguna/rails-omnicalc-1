@@ -2,26 +2,31 @@
   Random Results
 </h1>
 
+<%@min=params.fetch("user_min").to_f%>
+<%@max=params.fetch("user_max").to_f%>
+
+<%@random=rand(@min...@max)%>
+
 <dl>
   <dt>
     Minimum
   </dt>
   <dd>
-    1.0
+    <%=@min%>
   </dd>
 
   <dt>
     Maximum
   </dt>
   <dd>
-    5.0
+    <%=@max%>
   </dd>
 
   <dt>
     Random Number
   </dt>
   <dd>
-    2.2895547413297863
+    <%=@random%>
   </dd>
 </dl>
 
