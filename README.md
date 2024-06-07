@@ -243,3 +243,6 @@ square_results.html.erb
 </a>
 ```
 To convert float to currency format, use: number_to_currency(money_value, :unit => "$")
+
+9. Passed all tests.
+~~~
