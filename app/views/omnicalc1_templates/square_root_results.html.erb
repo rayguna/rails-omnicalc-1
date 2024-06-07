@@ -2,19 +2,22 @@
   Square Root Results
 </h1>
 
+<%@number = params.fetch("user_number").to_f%>
+<%@result = @number**0.5%>
+
 <dl>
   <dt>
     Number
   </dt>
   <dd>
-    9
+    <%=@number%>
   </dd>
 
   <dt>
     Square Root
   </dt>
   <dd>
-    3.0
+    <%=@result%>
   </dd>
 </dl>
 

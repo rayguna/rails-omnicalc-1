@@ -80,7 +80,7 @@ Rails.application.routes.draw do
 end
 ```
 
-- Consequently, you need to update the methods in the app/controllers/omnicalc1_controller.rb -- CA
+- Consequently, need to update the methods in the app/controllers/omnicalc1_controller.rb -- CA
 
 ```
 class Omnicalc1Controller < ApplicationController
@@ -120,3 +120,66 @@ end
 ```
 
 Troubleshooting TIPS: make sure all the names are consistent and correct for each of the RCAV components. 
+
+6. Check what parameters are being passed to theresults page by adding the <%=params%> tag.
+```
+<h1>
+  Square Results
+</h1>
+
+<%=params%>
+
+<dl>
+  <dt>
+    Number
+  </dt>
+  <dd>
+    5
+  </dd>
+
+  <dt>
+    Square
+  </dt>
+  <dd>
+    25.0
+  </dd>
+</dl>
+
+<a href="/square/new">
+  Calculate another square
+</a>
+```
+
+Here is the output: {"number"=>"9", "controller"=>"omnicalc1", "action"=>"square_results"}
+
+7. Embed the calcuation script directly into the html page. Note that to display the result, you must add an equal sign (e.g., <%=@my_variable>). Also, the variable must be preceeded with a @. If it is ust ruby code, simply embed with <%%>.   
+
+square_results.html.erb
+```
+<h1>
+  Square Results
+</h1>
+
+<%@number = params.fetch("number").to_f%>
+<%@result = @number**2%>
+
+<dl>
+  <dt>
+    Number
+  </dt>
+  <dd>
+    <%=@number%>
+  </dd>
+
+  <dt>
+    Square
+  </dt>
+  <dd>
+    <%=@result%>
+  </dd>
+</dl>
+
+<a href="/square/new">
+  Calculate another square
+</a>
+```
